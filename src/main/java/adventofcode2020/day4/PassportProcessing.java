@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class PassportProcessing {
+
     public enum DataField {
 
         byr("Birth Year", true),
@@ -31,7 +32,7 @@ public class PassportProcessing {
         private static final Pattern yearPattern = Pattern.compile("^([0-9]{4})$");
         private static final Pattern hairColorPattern = Pattern.compile("^#[0-9a-f]{6}$");
         private static final Pattern pidPattern = Pattern.compile("^([0-9]{9})$");
-        private static final List<String> eyeColors = List.of("amb","blu","brn","gry","grn","hzl","oth");
+        private static final List<String> eyeColors = List.of("amb", "blu", "brn", "gry", "grn", "hzl", "oth");
 
         DataField(String fieldName, boolean isMandatory) {
             this.fieldName = fieldName;
@@ -90,14 +91,13 @@ public class PassportProcessing {
 
     static class PassportData {
         Map<DataField, String> data = Arrays.stream(DataField.values())
-                .collect(Collectors.toMap(Function.identity(), (v)-> ""));
+                .collect(Collectors.toMap(Function.identity(), (v) -> ""));
         final static Pattern keyValuePattern = Pattern.compile("(\\w+):([^\\s]*)");
 
         PassportData(String dataString) {
             Matcher matcher = keyValuePattern.matcher(dataString);
-            while(matcher.find())
-                if (DataField.valueOf(matcher.group(1)) != null)
-                    data.put(DataField.valueOf(matcher.group(1)), matcher.group(2));
+            while (matcher.find())
+                data.put(DataField.valueOf(matcher.group(1)), matcher.group(2));
         }
 
         boolean isValid() {
@@ -111,10 +111,10 @@ public class PassportProcessing {
     public static int countValidRecords(@NotNull String pathToFile) throws FileNotFoundException {
         Scanner scanner = new Scanner(Path.of(pathToFile).toFile()).useDelimiter("\n\n");
         int validRecords = 0;
-        while(scanner.hasNext())
+        while (scanner.hasNext())
             if (new PassportData(scanner.next()).isValid())
                 validRecords++;
 
-       return validRecords;
+        return validRecords;
     }
 }
