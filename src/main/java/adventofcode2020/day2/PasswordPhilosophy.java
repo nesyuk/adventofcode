@@ -1,5 +1,7 @@
 package adventofcode2020.day2;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -55,22 +57,31 @@ public class PasswordPhilosophy {
         }
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Path path = Path.of("src/adventofcode2020/day2/input");
-        Scanner scanner = new Scanner(path.toFile());
-        int oldPolicyCounter = 0;
-        int newPolicyCounter = 0;
+    public static int countValidOldPolicyRecords(@NotNull String inputFilePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(Path.of(inputFilePath).toFile());
+        int validPolicyCounter = 0;
         while(scanner.hasNextLine()) {
             ParsedEntry entry = ParsedEntry.fromString(scanner.nextLine());
             if (entry == null)
                 throw new IllegalArgumentException();
             if (entry.confirmsOldPolicy())
-                oldPolicyCounter++;
-            if (entry.confirmsNewPolicy())
-                newPolicyCounter++;
+                validPolicyCounter++;
         }
 
-        System.out.println(oldPolicyCounter);
-        System.out.println(newPolicyCounter);
+        return validPolicyCounter;
+    }
+
+    public static int countValidNewPolicyRecords(@NotNull String inputFilePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(Path.of(inputFilePath).toFile());
+        int validPolicyCounter = 0;
+        while(scanner.hasNextLine()) {
+            ParsedEntry entry = ParsedEntry.fromString(scanner.nextLine());
+            if (entry == null)
+                throw new IllegalArgumentException();
+            if (entry.confirmsNewPolicy())
+                validPolicyCounter++;
+        }
+
+        return validPolicyCounter;
     }
 }

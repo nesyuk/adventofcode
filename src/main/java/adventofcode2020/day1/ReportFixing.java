@@ -1,5 +1,7 @@
 package adventofcode2020.day1;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -25,13 +27,19 @@ public class ReportFixing {
         return -1;
     }
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Path path = Path.of("src/adventofcode2020/day1/input");
-        Scanner scanner = new Scanner(path.toFile());
+    private static List<Integer> parseInputNumbers(String inputFilePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(Path.of(inputFilePath).toFile());
         List<Integer> inputNumbers = new ArrayList<>();
         while(scanner.hasNextInt())
             inputNumbers.add(scanner.nextInt());
-        System.out.println(ReportFixing.findComplementary(inputNumbers, 0, 2020));
-        System.out.println(ReportFixing.find3Numbers(inputNumbers, 2020));
+        return inputNumbers;
+    }
+
+    public static int productOfTwoNumbers(@NotNull String inputFilePath) throws FileNotFoundException {
+        return ReportFixing.findComplementary(parseInputNumbers(inputFilePath), 0, 2020);
+    }
+
+    public static int productOfThreeNumbers(@NotNull String inputFilePath) throws FileNotFoundException {
+        return ReportFixing.find3Numbers(parseInputNumbers(inputFilePath), 2020);
     }
 }
