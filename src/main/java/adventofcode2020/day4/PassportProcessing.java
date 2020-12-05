@@ -108,8 +108,8 @@ public class PassportProcessing {
         }
     }
 
-    public static int countValidRecords(@NotNull String pathToFile) throws FileNotFoundException {
-        Scanner scanner = new Scanner(Path.of(pathToFile).toFile()).useDelimiter("\n\n");
+    public static int countValidRecords(@NotNull String inputFilePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(Path.of(inputFilePath).toFile()).useDelimiter("\n\n");
         int validRecords = 0;
         while (scanner.hasNext())
             if (new PassportData(scanner.next()).isValid())
