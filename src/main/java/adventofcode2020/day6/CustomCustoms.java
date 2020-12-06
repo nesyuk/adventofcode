@@ -4,7 +4,6 @@ import lombok.NonNull;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;

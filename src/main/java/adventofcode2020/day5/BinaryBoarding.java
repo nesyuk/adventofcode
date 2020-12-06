@@ -4,11 +4,8 @@ import lombok.NonNull;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
-import java.util.*;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class BinaryBoarding {
 

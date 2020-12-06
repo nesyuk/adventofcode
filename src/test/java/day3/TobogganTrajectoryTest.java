@@ -1,4 +1,4 @@
-package test.java.day3;
+package day3;
 
 import adventofcode2020.day3.TobogganTrajectory;
 import org.apache.commons.lang3.tuple.Pair;
