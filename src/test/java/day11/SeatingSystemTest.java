@@ -50,7 +50,7 @@ public class SeatingSystemTest {
 
         assertThat(SeatingSystem.firstNeighbourCount(
                 SeatingSystem.readGrid("src/test/java/day11/input_seen_1"), 1, 1, false),
-                is(equalTo(1)));
+                is(equalTo(0)));
 
         assertThat(SeatingSystem.firstNeighbourCount(
                 SeatingSystem.readGrid("src/test/java/day11/input_seen_8"), 4, 3, false),
