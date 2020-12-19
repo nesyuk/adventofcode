@@ -110,8 +110,4 @@ public class OperationOrder {
         }
         return evalExpressionRule2(expression);
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        System.out.println(scanExpressionsRule1("/Users/nelly/Projects/IdeaProjects/adventofcode/src/test/java/day18/test_input4"));
-    }
 }
